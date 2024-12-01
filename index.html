@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>F-Pram</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+      @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+
+      body {
+        font-family: "Indie Flower", cursive !important;
+        background-image: url("Bg.png"); /* Menunjuk ke folder 'images' */
+        background-size: cover; /* Pastikan gambar menutupi seluruh layar */
+        background-position: center; /* Posisi gambar di tengah */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        position: relative;
+      }
+
+      ::selection {
+        background: transparent;
+      }
+
+      h4 {
+        font-size: 26px;
+        line-height: 1.5;
+        font-family: "Amatic SC", cursive !important;
+        margin-bottom: 10px;
+        transform: rotate(-10deg);
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 0;
+        margin: 6px;
+        padding: 0 0 0 10px;
+      }
+
+      .color1 {
+        color: #1bbc9b;
+      }
+
+      .color2 {
+        color: #c0392b;
+      }
+
+      .card {
+        color: #013243; /*SHERPA BLUE*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 400px;
+        background: #e0e1dc;
+        transform-style: preserve-3d;
+        transform: translate(-50%, -50%) perspective(2000px);
+        box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5),
+          20px 0 60px rgba(0, 0, 0, 0.5);
+        transition: 1s;
+      }
+
+      .card:hover {
+        transform: translate(-50%, -50%) perspective(2000px) rotate(15deg)
+          scale(1.2);
+        box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5),
+          0 10px 100px rgba(0, 0, 0, 0.5);
+      }
+
+      .card:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: #bac1ba;
+        transform-origin: bottom;
+        transform: skewX(-45deg);
+      }
+
+      .card:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -5px;
+        width: 5px;
+        height: 100%;
+        background: #92a29c;
+        transform-origin: left;
+        transform: skewY(-45deg);
+      }
+
+      .card .imgBox {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        transform-origin: left;
+        transition: 0.7s;
+      }
+
+      .card .bark {
+        position: absolute;
+        background: #e0e1dc;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: 0.7s;
+      }
+
+      .card .imgBox img {
+        min-width: 250px;
+        max-height: 400px;
+      }
+
+      .card:hover .imgBox {
+        transform: rotateY(-135deg);
+      }
+
+      .card:hover .bark {
+        opacity: 1;
+        transition: 0.6s;
+        box-shadow: 300px 200px 100px rgba(0, 0, 0, 0.4) inset;
+      }
+
+      .card .details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        padding: 10px;
+        z-index: -1;
+        margin-top: 50px;
+      }
+
+      .card .details p {
+        font-size: 15px;
+        line-height: 5px;
+        transform: rotate(-10deg);
+        padding: 2.3px;
+      }
+
+      .card .details h4 {
+        text-align: center;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .btn {
+        position: fixed; /* Tombol tetap berada di posisi yang sama */
+        bottom: 20px; /* Jarak dari bawah */
+        right: 20px; /* Jarak dari kanan */
+        width: 60px;
+        height: 60px;
+        background-color: #ff6347; /* Warna menarik seperti tomat */
+        border: none;
+        border-radius: 50%; /* Membuat tombol berbentuk bulat */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Bayangan untuk efek kedalaman */
+        cursor: pointer;
+        transition: all 0.3s ease-in-out; /* Transisi halus saat hover */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn:hover {
+        background-color: #ff4500; /* Warna tombol berubah saat hover */
+        transform: scale(1.1) rotate(45deg); /* Membesar dan sedikit berputar */
+      }
+
+      .btn:active {
+        background-color: #ff6347; /* Warna kembali ke aslinya saat diklik */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Bayangan lebih kecil saat ditekan */
+        transform: scale(0.95); /* Efek tombol sedikit mengecil saat ditekan */
+      }
+
+      .btn i {
+        font-size: 30px; /* Ukuran ikon */
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="imgBox">
+        <div class="bark"></div>
+        <img
+          src="https://i.pinimg.com/474x/4f/85/b8/4f85b834207691c71dc6a9343eabbda4.jpg"
+          alt="Image"
+        />
+      </div>
+      <div class="details">
+        <h4 class="color1">SELAMAT MAJIKAN CLEA</h4>
+        <h4 class="color2">Ikut Bangga</h4>
+        <p>DEAR Tiara</p>
+        <p>Semoga apa yang kamu inginkan tercapai</p>
+        <p>gurr.. iso ngomong selamat</p>
+        <p>ingat kata kk Gem</p>
+        <p>"Berguna bagi orang lain itu perlu tirr,</p>
+        <p>Tapi bukan berarti kue capek sendiri."</p>
+        <p>Doa terbaik untukmu. sekali meneh</p>
+        <p>Congrats Paramita, siap nyusul pokoee.</p>
+        <p>Hadiahe cuma di tombol love</p>
+        <p class="text-right">F-Star7</p>
+      </div>
+    </div>
+    <a href="index2.html">
+      <button class="btn">
+        <i class="fas fa-heart"></i>
+      </button>
+    </a>
+  </body>
+</html>
